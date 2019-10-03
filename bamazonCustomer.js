@@ -8,3 +8,8 @@ var connectiom = sql.createConnection({
     password: "password",
     database: "BAMAZON"
 });
+
+connection.connect(function(err){
+    if(err) throw err;
+    console.log("Connected with id: " + connection.threadId);
+})
