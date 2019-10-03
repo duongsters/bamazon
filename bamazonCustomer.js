@@ -1,7 +1,7 @@
 var sql = require("mysql");
 var inquirer = require("inquirer");
 
-var connectiom = sql.createConnection({
+var connection = sql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
@@ -38,7 +38,7 @@ var createTable = function() {
             }
         ])
         .then(function(answers){
-
+            renderInventory();
         });
 
     };
@@ -46,15 +46,15 @@ var createTable = function() {
         conection.query("SELECT * FROM products", function(err, res) {
             if(err) throw err;
             
-            if(res[id]- 1 == undefined) {
-                console.log("Error! Please enter the correct value of the given choices");
+            if(id < 1 || id > res.length) {
+                console.log("Error! Please enter the correct value of the given choice");
                 renderUserChoice();
             }
             else if (units > res[id-1].stock_quantity){
                 console.log("Not enough in the inventory for this item--please input a value within the inventory range");
             }
             else {
-                
+                updateInventory();
             }
         });
     };
