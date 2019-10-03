@@ -50,7 +50,7 @@ var createTable = function() {
                 console.log("Error! Please enter the correct value of the given choices");
                 renderUserChoice();
             }
-            else if (units > res[id-1].stock_quantity{
+            else if (units > res[id-1].stock_quantity){
                 console.log("Not enough in the inventory for this item--please input a value within the inventory range");
             }
             else {
@@ -58,5 +58,17 @@ var createTable = function() {
             }
         });
     };
-    
+    function updateInventory(id, startInventory, units, userPurchase, price){
+        connection.query("UPDATE products SET ? WHERE ?", 
+        [
+            {
+                stock_quantity: startInventory - units,
+            },
+            {
+                item_id: id
+            }
+        ],
+        
+        )
+}
 }
