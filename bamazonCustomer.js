@@ -28,8 +28,14 @@ var createTable = function() {
             {
                 type: "input",
                 name: "userChoice",
-                message: "Enter ID of item you're interested in purchasing"
+                message: "What is the ID of the item you would like to to purchase?"
+            },
+            {
+                type: "input",
+                name: "itemAmount",
+                message: "How many would you like?"
             }
         ])
+        
     }
 }
