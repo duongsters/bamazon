@@ -12,4 +12,12 @@ var connectiom = sql.createConnection({
 connection.connect(function(err){
     if(err) throw err;
     console.log("Connected with id: " + connection.threadId);
-})
+});
+
+var createTable = function() {
+    connection.query("SELECT * FROM products", function(err, res) {
+        for(var j = 0; j <res.length; j++) {
+            console.log()
+        }
+    })
+}
