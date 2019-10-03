@@ -46,7 +46,7 @@ var createTable = function() {
         conection.query("SELECT * FROM products", function(err, res) {
             if(err) throw err;
             
-            if(res[id-1] == undefined) {
+            if(res[id]- 1 == undefined) {
                 console.log("Error! Please enter the correct value of the given choices");
                 renderUserChoice();
             }
@@ -68,6 +68,11 @@ var createTable = function() {
                 item_id: id
             }
         ],
+        function(err, res) {
+            console.log("\nSuccess! Here is your receipt of your order: " + units + userPurchase + ".\n");
+            console.log("\nTotal Cost: $" + (units * price) + ".\n");
+            conection.end()
+        }
         
         )
 }
