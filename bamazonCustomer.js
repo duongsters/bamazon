@@ -20,6 +20,16 @@ var createTable = function() {
             console.log("ID: " + res[j].item_id + 
             " | " + "Item: " + res[j].product_name + 
             " | " + "Price: $" + res[j].price);
-        }
-    })
+        };
+    });
+
+    function renderUserChoice() {
+        inquirer.prompt ([
+            {
+                type: "input",
+                name: "userChoice",
+                message: "Enter ID of item you're interested in purchasing"
+            }
+        ])
+    }
 }
