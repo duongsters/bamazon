@@ -21,6 +21,7 @@ var createTable = function() {
             " | " + "Item: " + res[j].product_name + 
             " | " + "Price: $" + res[j].price);
         };
+        renderUserChoice();
     });
 
     function renderUserChoice() {
@@ -36,6 +37,26 @@ var createTable = function() {
                 message: "How many would you like?"
             }
         ])
-        
-    }
+        .then(function(answers){
+
+        });
+
+    };
+    function renderInventory(id, units) {
+        conection.query("SELECT * FROM products", function(err, res) {
+            if(err) throw err;
+            
+            if(res[id-1] == undefined) {
+                console.log("Error! Please enter the correct value of the given choices");
+                renderUserChoice();
+            }
+            else if (units > res[id-1].stock_quantity{
+                console.log("Not enough in the inventory for this item--please input a value within the inventory range");
+            }
+            else {
+                
+            }
+        });
+    };
+    
 }
