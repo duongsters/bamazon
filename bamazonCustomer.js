@@ -1,5 +1,6 @@
 var sql = require("mysql");
 var inquirer = require("inquirer");
+var Table = require("cli-table");
 
 var connection = sql.createConnection({
     host: "localhost",
@@ -16,20 +17,28 @@ connection.connect(function(err){
 
 var createTable = function() {
     connection.query("SELECT * FROM products", function(err, res) {
+        var table = new Table ({
+            head: ["item_id", "product_name", "department_name", "price", "stock_quantity"], 
+            colWidths: [15, 20, 20, 20, 20]
+        });
+        // console.log(res);
         for(var j = 0; j <res.length; j++) {
-            console.log("ID: " + res[j].item_id + 
-            " | " + "Item: " + res[j].product_name + 
-            " | " + "Price: $" + res[j].price);
+            table.push([res[j].item_id, 
+            res[j].product_name, res[j].department_name,
+            res[j].price, res[j].stock_quantity]);
         };
-        renderUserChoice();
+        
+        console.log(table.toString());
     });
+};
 
     function renderUserChoice() {
+        createTable();
         inquirer.prompt ([
             {
                 type: "input",
                 name: "userChoice",
-                message: "What is the ID of the item you would like to to purchase?"
+                message: "What is the ID of the item you would like to to purchase?\n\n"
             },
             {
                 type: "input",
@@ -38,15 +47,17 @@ var createTable = function() {
             }
         ])
         .then(function(answers){
-            renderInventory();
+            renderInventory(answers.userChoice, answers.itemAmount);
         });
-
+        
     };
     function renderInventory(id, units) {
-        conection.query("SELECT * FROM products", function(err, res) {
+        connection.query("SELECT * FROM products", function(err, res) {
             if(err) throw err;
             
-            if(id < 1 || id > res.length) {
+            // if(id < 1 || id > res.length) {
+                if(res[id - 1] === undefined) {
+
                 console.log("Error! Please enter the correct value of the given choice");
                 renderUserChoice();
             }
@@ -54,7 +65,7 @@ var createTable = function() {
                 console.log("Not enough in the inventory for this item--please input a value within the inventory range");
             }
             else {
-                updateInventory();
+                updateInventory(id, res[id-1].stock_quantity, units, res[id-1].product_name, res[id-1].price);
             }
         });
     };
@@ -69,11 +80,15 @@ var createTable = function() {
             }
         ],
         function(err, res) {
-            console.log("\nSuccess! Here is your receipt of your order: " + units + userPurchase + ".\n");
-            console.log("\nTotal Cost: $" + (units * price) + ".\n");
-            conection.end()
+            console.log("\nSuccess! Here is your receipt of your order: \n" + units + " " + userPurchase + ".");
+            console.log("Total Cost: $" + (units * price) + ".\n");
+            
+            renderUserChoice()
+
+
         }
         
         )
 }
-}
+
+renderUserChoice();
