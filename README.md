@@ -5,10 +5,10 @@
 
 ## Getting Started:
 (1) Clone bamazon repository via Github.com/duongsters/bamazon
-(2) Run command line Terminal (or via Gitbash) 'npm install'
-(3) Run command line 'node bamazonCustomer.js'
-(4) Follow through the directions
-(5) Run 'ctrl + c' to exit each mode entirely or 'q' to abort in the middle the running application
+(2) Run command line Terminal (or via Gitbash) 'npm install' for required NPMS used within the application
+(3) Run command line 'node bamazonCustomer.js' to start up the application
+(4) Follow through the directions asked within the CLI
+(5) Run 'ctrl + c' to exit the application entirely or 'q' to abort in the middle the running application
 
 ## Technologies Used:
 - NPM: I used specifically the MySQL, Inquirer and CLI-Table node package managers throughout the entire assigment. MySQL to create the bamazon table database. Inquirer to create the user prompts within the command line terminal. And the CLI-Table npm to create clean tables of the bamazon product
