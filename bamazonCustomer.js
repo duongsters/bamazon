@@ -45,10 +45,18 @@ var createTable = function() {
             {
                 type: "input",
                 name: "itemAmount",
-                message: "How many would you like?"
+                message: "How many would you like? [type 'q' to exit]"
             }
         ])
         .then(function(answers){
+            if(answers.userChoice.toUpperCase()=="Q"){
+                console.log("Aw, sad to see you leave...please come again!")
+                process.exit();
+            }
+            if(answers.itemAmount.toUpperCase() == "Q"){
+                console.log("Aw, sad to see you leave...please come again!")
+                process.exit();
+            }
             renderInventory(answers.userChoice, answers.itemAmount);
         });
                 
@@ -109,6 +117,7 @@ var createTable = function() {
                         }
                         else {
                             console.log("Thanks for shopping here at Bamazon!");
+                            process.exit();
                         }
                     })
                 }
