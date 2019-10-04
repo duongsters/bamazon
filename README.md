@@ -4,7 +4,7 @@
 
 
 ## Getting Started:
-(1) Clone bamazon repository via Github.com/duongsters/bamazon
+(1) Clone bAmazon repository via Github.com/duongsters/bamazon
 (2) Run command line Terminal (or via Gitbash) 'npm install' for required NPMS used within the application
 (3) Run command line 'node bamazonCustomer.js' to start up the application
 (4) Follow through the directions asked within the CLI
@@ -16,7 +16,7 @@
 - Javascript: Basically used within the main files to render the entire application
 
 Summary:
-Bamazon is an application I created that is an interactive shopping node app where MySQL and Node.JS are used to allow users to purchase items as a customer, view, track and update the product inventory and track the total sales by department. The Bamazon Customer Portal, which is ran within the 'bamazonCustomer.js' file, allows users to view the current items available for purchase within the inventory (from within the 'bamazon.sql' products database). The user will be prompted to select the item they want to purchase and how many items they wish to purchase. Initially when this application is ran--solely through the command line terminal-- it will display to the user the products in the store then prompts the user/customer in which product they would like to purchase by a unique identification number of the item being sold. If the item is in stock, the order will be completed and the user will see the total amount of their purchase. The application also will not only ask for what items the user/customer is interested in, but also the amount quantity of that specific item that they are interested in as well. The inventory will finally update it's inventory based on those two questions prompted to the user/customer. The user/customer has the ability to abort the entire application by pressing the 'q' button during the initial question prompts as well.
+bAmazon is an application I created, similar in concept to Amazon.com, an interactive shopping node app where MySQL and Node.JS are used to allow users to purchase items as a customer, view, track and update the product inventory and track the total sales by department. The bAmazon is ran within the 'bamazonCustomer.js' file, allowing user/customer to view the current items available for purchase within the 'products' inventory (located within the 'bamazon.sql' products database file). The user/customer will be prompted, via inquirer npm usage, to select the item they want to purchase and how many items they wish to purchase. Initially as bAmazon is ran--solely through the command line terminal-- it will display to the user/customer the products in bAmazon then prompts the user/customer in which product they would like to purchase by a unique identification number of the item being sold. If the item is in stock, the order will be completed and the user will see the total amount of their purchase. bAmazon also will not only ask for what items the user/customer is interested in, but also the amount quantity of that specific item that they are interested in as well. The inventory will finally update it's inventory based on those two questions prompted to the user/customer. The user/customer has the ability to abort the entire bAmazon application by pressing the 'q' button during the initial question prompts as well.
 
 
 ## Code Snippet:
